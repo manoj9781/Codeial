@@ -10,6 +10,10 @@ app.use(expressLayouts);
 // Use express router
 app.use('/', require('./routes'));
 
+//Extract styles and scripts from subpages into the layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+
 //Setup up view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
