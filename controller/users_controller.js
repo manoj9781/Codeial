@@ -4,3 +4,19 @@ module.exports.profile = function (req, res) {
         title: "Profile"
     });
 };
+
+
+// Render the sign up Page
+module.exports.signUp = function (req, res) {
+    return res.render('user_sign_up', {
+        title: "codeail | Sign Up",
+    });
+};
+
+// Render Sign in <Page></Page>
+
+module.exports.signIn = function (req, res) {
+    return res.render('user_sign_in', {
+        title: "Codeial | Sign In"
+    });
+};
