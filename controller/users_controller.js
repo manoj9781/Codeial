@@ -65,7 +65,7 @@ module.exports.create = function (req, res) {
 module.exports.createSession = function (req, res) {
   //TODO later
 
-  //Find the User
+  /* Find the User
   User.findOne({ email: req.body.email }, function (err, user) {
     if (err) {
       console.log('Error in finding the user in signing in');
@@ -81,4 +81,5 @@ module.exports.createSession = function (req, res) {
       return res.redirect('back');
     }
   });
+  */
 };
