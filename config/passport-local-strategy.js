@@ -1,5 +1,5 @@
 const passport = require('passport');
-const LocalStartegy = require('passport-local');
+const LocalStartegy = require('passport-local').Strategy;
 const User = require('../models/user');
 
 
@@ -45,6 +45,25 @@ passport.deserializeUser(function (id, done) {
         return done(null, user);
     });
 });
+
+// Check if the user is authenticated or not
+passport.checkAuthentication = function (req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+
+    // If the user is not signed in 
+    return res.redirect('/users/sign-in');
+}
+
+passport.setAuthencticatedUser = function (req, res, next) {
+    if (req.isAuthenticated()) {
+        //req.user contains the current signed in user fron the session cookie 
+        // we are just sending this to locals from the views
+        res.locals.user = req.user;
+    } 
+    next(); 
+}
 
 
 module.exports = passport;
