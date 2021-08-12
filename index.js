@@ -26,7 +26,7 @@ app.set('views', './views');
 
 app.use(session({
     name: 'codeial',
-    // Todo  cheange the secret before deployment 
+    // Todo  change the secret before deployment 
     secret: 'something',
     saveUninitialized: false,
     resave: false,
