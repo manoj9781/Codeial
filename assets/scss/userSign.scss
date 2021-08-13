@@ -12,13 +12,19 @@
             padding-left: 8px;
         }
         input[type=submit]{
-            background-color: lightsalmon;
-            padding: 8px;
+            margin: 16px;
+            cursor: pointer;
+            color: white;
+            background-color: #001E6C;
+            padding: 16px;
+            border-radius: 24px;
+        }
+        input[type=submit]:hover{
+            background-color: white;
             color: black;
-            font-size: 16px;
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: bold;
-
+        }
+        input:focus{
+            outline: none;
         }
     }
 }

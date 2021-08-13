@@ -1,0 +1,33 @@
+.sign-up {
+  padding-left: 16px;
+  text-align: center; }
+  .sign-up .form-sign-up {
+    margin-left: 30%;
+    margin-right: 30%;
+    background: linear-gradient(#654ea3, #eaafc8);
+    border-radius: 16px;
+    color: white; }
+    .sign-up .form-sign-up input {
+      margin-top: 16px;
+      border: none;
+      border-bottom: 1px solid white;
+      padding-left: 8px;
+      color: black;
+      background-color: transparent;
+      display: inline-block;
+      width: 50%; }
+    .sign-up .form-sign-up input[type=submit] {
+      margin: 16px;
+      cursor: pointer;
+      color: white;
+      background-color: #001E6C;
+      padding: 16px;
+      border-radius: 24px;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: bold; }
+    .sign-up .form-sign-up input[type=submit]:hover {
+      background-color: white;
+      color: black; }
+    .sign-up .form-sign-up input:focus {
+      outline: none; }

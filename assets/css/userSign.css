@@ -9,9 +9,14 @@
     background-color: transparent;
     padding-left: 8px; }
   .form-control .form-input input[type=submit] {
-    background-color: lightsalmon;
-    padding: 8px;
-    color: black;
-    font-size: 16px;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold; }
+    margin: 16px;
+    cursor: pointer;
+    color: white;
+    background-color: #001E6C;
+    padding: 16px;
+    border-radius: 24px; }
+  .form-control .form-input input[type=submit]:hover {
+    background-color: white;
+    color: black; }
+  .form-control .form-input input:focus {
+    outline: none; }
