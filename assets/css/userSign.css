@@ -1,0 +1,17 @@
+.form-control {
+  text-align: center;
+  margin-left: 16px; }
+  .form-control #sign-in {
+    color: #1B1717; }
+  .form-control .form-input input {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    padding-left: 8px; }
+  .form-control .form-input input[type=submit] {
+    background-color: lightsalmon;
+    padding: 8px;
+    color: black;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold; }

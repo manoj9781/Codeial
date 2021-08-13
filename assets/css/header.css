@@ -1,0 +1,28 @@
+.container .navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #232323; }
+
+.container #heading {
+  padding: 16px;
+  color: white; }
+
+.container .menu {
+  display: flex;
+  align-items: center; }
+  .container .menu ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none; }
+    .container .menu ul li {
+      padding: 16px;
+      margin-left: 16px;
+      font-size: 16px;
+      font-weight: bold; }
+      .container .menu ul li a {
+        text-decoration: none;
+        color: white; }
+      .container .menu ul li a:hover {
+        color: palevioletred;
+        border-bottom: 1px solid lightgray; }

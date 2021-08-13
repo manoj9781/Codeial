@@ -1,0 +1,22 @@
+.main {
+  background-color: #132C33;
+  display: flex; }
+  .main footer {
+    padding: 16px;
+    color: white;
+    align-items: center;
+    font-size: 16px; }
+  .main .main-container {
+    display: flex;
+    align-items: center; }
+    .main .main-container .footer-links {
+      display: flex;
+      justify-content: space-around;
+      align-items: center; }
+      .main .main-container .footer-links a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+        margin-left: 16px;
+        padding: 16px; }
