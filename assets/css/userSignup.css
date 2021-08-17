@@ -30,4 +30,5 @@
       background-color: white;
       color: black; }
     .sign-up .form-sign-up input:focus {
-      outline: none; }
+      outline: none;
+      background-color: transparent; }
