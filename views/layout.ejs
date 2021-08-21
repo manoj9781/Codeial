@@ -11,10 +11,12 @@
   </head>
   <body>
     <%- include('_header'); -%>
-    <main id="layout-main">
-        <%- body %>
-    </main>
-    <%- include('_footer'); -%>
-     <%- script %>
+     <% if(flash.success && flash.success.lenght > 0){ %>
+    <h5>
+      <%= flash.success %>
+    </h5>
+    <% } %>
+    <main id="layout-main"><%- body %></main>
+    <%- include('_footer'); -%> <%- script %>
   </body>
 </html>
