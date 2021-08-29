@@ -8,35 +8,47 @@ module.exports.profile = function (req, res) {
       profile_user:user
     });
   })
-
-
-  // if (req.cookies.user_id) {
-  //   User.findById(req.cookies.user_id, function (err, user) {
-  //     if (user) {
-  //       return res.render('profile', {
-  //         title: 'User Profile',
-  //         user: user,
-  //       });
-  //     }
-  //     else {
-  //       return res.redirect('/users/sign-in');
-  //    }
-  //   });
-  // }
-  // else {
-  //   return res.redirect('/users/sign-in');
-  // }
 };
 
-module.exports.update = function (req, res) {
-  if (req.user.id == req.params.id) {
-    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
-      return res.redirect('back');
-    });
-  }
-  else {
-    return res.status(401).send('unAothorized');
-  }
+module.exports.update = async function (req, res) {
+//  if (req.user.id == req.params.id) {
+//    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+//      return res.redirect('back');
+//    });
+//  }
+//  else {
+//    req.flash('error', 'Unaothorised')
+//    return res.status(401).send('unAothorized');
+//  }
+    
+    if(req.user.id == req.params.id){
+        try{
+            let user = await User.findById(req.params.id);
+            
+            User.uploadedAvatar(req, res, function(err){
+                if(err){
+                    console.log('****Multer Error****');
+                }
+//                console.log(req.file);
+                user.name = req.body.name;
+                user.email = req.body.email;
+                if(req.file){
+                    user.avatar = User.avatarPath+'/'+req.file.filename;
+                }
+                user.save();
+                return res.redirect('back');
+            });
+        }catch(error){
+            req.flash('error', error);
+            return res.redirect('back');
+        }
+    }
+    else{
+         req.flash('error', 'Unaothorised')
+         return res.status(401).send('Unaothorised');
+    }
+    
+    
 }
 
 // Render the sign up Page
@@ -60,6 +72,8 @@ module.exports.signIn = function (req, res) {
   });
 };
 
+
+ 
 // Get sign Up data
 module.exports.create = function (req, res) {
   //TODO later
@@ -84,12 +98,44 @@ module.exports.create = function (req, res) {
     }
   });
 };
+
+
 //sign In and create a session for user
 module.exports.createSession = function (req, res) {
   //TODO later
 
   req.flash('success', 'Logged in Succesfully');
   return res.redirect('/');
+};
+
+module.exports.destroySession = function (req, res) {
+  req.logout();
+  req.flash('success', 'Sign out Succesfully');
+
+  return res.redirect('/');
+}
+
+
+
+
+
+  // if (req.cookies.user_id) {
+  //   User.findById(req.cookies.user_id, function (err, user) {
+  //     if (user) {
+  //       return res.render('profile', {
+  //         title: 'User Profile',
+  //         user: user,
+  //       });
+  //     }
+  //     else {
+  //       return res.redirect('/users/sign-in');
+  //    }
+  //   });
+  // }
+  // else {
+  //   return res.redirect('/users/sign-in');
+  // }
+
 
   /* Find the User
   User.findOne({ email: req.body.email }, function (err, user) {
@@ -108,11 +154,3 @@ module.exports.createSession = function (req, res) {
     }
   });
   */
-};
-
-module.exports.destroySession = function (req, res) {
-  req.logout();
-  req.flash('success', 'Sign out Succesfully');
-
-  return res.redirect('/');
-}
