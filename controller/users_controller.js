@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const path = require('path');
+const fs = require('path');
 
 module.exports.profile = function (req, res) {
   // return res.end('<h1> User Profile</h1>')
@@ -11,16 +13,6 @@ module.exports.profile = function (req, res) {
 };
 
 module.exports.update = async function (req, res) {
-//  if (req.user.id == req.params.id) {
-//    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
-//      return res.redirect('back');
-//    });
-//  }
-//  else {
-//    req.flash('error', 'Unaothorised')
-//    return res.status(401).send('unAothorized');
-//  }
-    
     if(req.user.id == req.params.id){
         try{
             let user = await User.findById(req.params.id);
@@ -33,6 +25,9 @@ module.exports.update = async function (req, res) {
                 user.name = req.body.name;
                 user.email = req.body.email;
                 if(req.file){
+                    if(user.avatar){
+//                       fs.unbind(path.join(__dirname,'..', user.avatar));
+                    }
                     user.avatar = User.avatarPath+'/'+req.file.filename;
                 }
                 user.save();
@@ -154,3 +149,15 @@ module.exports.destroySession = function (req, res) {
     }
   });
   */
+
+
+
+//  if (req.user.id == req.params.id) {
+//    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+//      return res.redirect('back');
+//    });
+//  }
+//  else {
+//    req.flash('error', 'Unaothorised')
+//    return res.status(401).send('unAothorized');
+//  }
