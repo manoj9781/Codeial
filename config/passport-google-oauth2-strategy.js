@@ -14,7 +14,7 @@ passport.use(
     callbackURL: 'http://localhost:8000/users/auth/google/callback',
   }, function (accessToken, refreshToken, profile, done) {
       User.findOne({
-          email: profile.email[0].value
+          email: profile.emails[0].value
       }).exec(function (err, user) {
           if (err) {
               console.log('Error in find the User', err);
@@ -26,8 +26,8 @@ passport.use(
           }
           else {
               User.create({
-                  name: profile.display,
-                  email: profile.email[0].value,
+                  name: profile.displayName,
+                  email: profile.emails[0].value,
                   password: crypto.randomBytes(20).toString('hex'),
               }, function (err, user) {
                   if (err) {
