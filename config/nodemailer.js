@@ -4,12 +4,12 @@ const path = require('path');
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
-  host: 'smtp.gmail',
+  host: 'smtp.gmail.com',
   port: 587,
   secure: false,
   auth: {
-    user: 'manojsinghrana467@gmail.com',
-    password: 'Web@1234',
+    user: 'manoj11807576@gmail.com',
+    pass: 'Web@1234',
   },
 });
 
@@ -25,10 +25,11 @@ let renderTemplate = (data, relativePath) => {
       }
       mailHTML = template;
     }
-  );
+    );
+    return mailHTML;
 };
 
 module.exports = {
-    transporter: transporter,
-    renderTemplate: renderTemplate,
+    transporter : transporter,
+    renderTemplate : renderTemplate,
 };
