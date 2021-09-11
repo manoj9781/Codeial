@@ -56,3 +56,9 @@
 ></script>
 
 <script src="/js/chat_engine.js"></script>
+
+<% if(locals.user) { %>
+  <script>
+      new chatEngine('user-chat-box', '<%= locals.user._id%>')
+  </script>
+ <%} %>
