@@ -15,12 +15,15 @@ const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMiddleware = require('./config/middleware');
+const cors = require('cors');
 
 // setup the chat server to be used
+
 const chatServer = require('http').Server(app);
-const chatSockets = require('./config/chat_sokets').chatSockets(chatServer);
-chatServer.listen(5000);
-console.log('Chat server is on the port 5000');
+const chatSockets = require('./config/chat_sockets.js' ).chatSockets(chatServer);
+console.log('Chat server is listening on the port', port);
+ 
+
 
 
 app.use(sassMiddleware({
@@ -78,7 +81,7 @@ app.use(customMiddleware.setFlash);
 app.use('/', require('./routes'));
 
 // Start the server
-app.listen(port, function (err) {
+chatServer.listen(port, function (err) {
     if (err) {
         console.log(`Error in ruuning the server: ${err}`);
     }

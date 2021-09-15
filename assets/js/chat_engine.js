@@ -1,19 +1,18 @@
 class chatEngine {
-    constructor(chatBoxId, userEmail) {
-        this.chatBoxId = chatBoxId;
-        this.userEmail = userEmail;
+  constructor(chatBoxId, userEmail) {
+    this.chatBox = $(`#${chatBoxId}`);
+    this.userEmail = userEmail;
 
-        this.socket = io.connect('http://localhost:5000');
+    this.socket = io.connect('http://localhost:8000');
 
-        if (this.userEmail) {
-            this.connectionHandler();
-        }
+    if (this.userEmail) {
+      this.connectionHandler();
     }
+  }
 
-
-    connectionHandler() {
-        this.socket.on('connect', function () {
-            console.log('Connection established using socket');
-        })
-    }
+  connectionHandler() {
+    this.socket.on('connect', function () {
+      console.log('Connection established using socket');
+    });
+  }
 }
