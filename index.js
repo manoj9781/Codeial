@@ -22,6 +22,7 @@ const cors = require('cors');
 const chatServer = require('http').Server(app);
 const chatSockets = require('./config/chat_sockets.js' ).chatSockets(chatServer);
 console.log('Chat server is listening on the port', port);
+// chatServer.listen(3000);
  
 
 

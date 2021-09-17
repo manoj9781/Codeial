@@ -54,7 +54,7 @@
 
 <% if(locals.user) { %>
 <script>
-   new chatEngine('user-chat-box', '<%= locals.user._id%>');
+   new chatEngine('user-chat-box', '<%= locals.user.email%>');
 </script>
 <% }%>
 
