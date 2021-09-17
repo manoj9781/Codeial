@@ -3,6 +3,11 @@ module.exports.chatSockets = function (socketServer) {
 
     io.sockets.on('connection', function (socket) {
         console.log('new Connection is established', socket.id);
+
+
+        socket.on('disconnect', function () {
+            console.log('User has been disconnected');
+        })
     });
 }
 
